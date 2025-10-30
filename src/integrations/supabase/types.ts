@@ -14,7 +14,125 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      focus_sessions: {
+        Row: {
+          coins_earned: number
+          completed: boolean | null
+          completed_at: string | null
+          duration_minutes: number
+          id: string
+          started_at: string | null
+          task_id: string | null
+          user_id: string
+          xp_earned: number
+        }
+        Insert: {
+          coins_earned: number
+          completed?: boolean | null
+          completed_at?: string | null
+          duration_minutes: number
+          id?: string
+          started_at?: string | null
+          task_id?: string | null
+          user_id: string
+          xp_earned: number
+        }
+        Update: {
+          coins_earned?: number
+          completed?: boolean | null
+          completed_at?: string | null
+          duration_minutes?: number
+          id?: string
+          started_at?: string | null
+          task_id?: string | null
+          user_id?: string
+          xp_earned?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "focus_sessions_task_id_fkey"
+            columns: ["task_id"]
+            isOneToOne: false
+            referencedRelation: "tasks"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          best_streak: number | null
+          created_at: string | null
+          current_streak: number | null
+          daily_coins: number | null
+          id: string
+          level: number | null
+          total_xp: number | null
+          updated_at: string | null
+          username: string | null
+        }
+        Insert: {
+          best_streak?: number | null
+          created_at?: string | null
+          current_streak?: number | null
+          daily_coins?: number | null
+          id: string
+          level?: number | null
+          total_xp?: number | null
+          updated_at?: string | null
+          username?: string | null
+        }
+        Update: {
+          best_streak?: number | null
+          created_at?: string | null
+          current_streak?: number | null
+          daily_coins?: number | null
+          id?: string
+          level?: number | null
+          total_xp?: number | null
+          updated_at?: string | null
+          username?: string | null
+        }
+        Relationships: []
+      }
+      tasks: {
+        Row: {
+          category: Database["public"]["Enums"]["task_category"] | null
+          coin_bid: number
+          completed_at: string | null
+          created_at: string | null
+          description: string | null
+          duration_minutes: number
+          id: string
+          status: Database["public"]["Enums"]["task_status"] | null
+          title: string
+          user_id: string
+        }
+        Insert: {
+          category?: Database["public"]["Enums"]["task_category"] | null
+          coin_bid: number
+          completed_at?: string | null
+          created_at?: string | null
+          description?: string | null
+          duration_minutes: number
+          id?: string
+          status?: Database["public"]["Enums"]["task_status"] | null
+          title: string
+          user_id: string
+        }
+        Update: {
+          category?: Database["public"]["Enums"]["task_category"] | null
+          coin_bid?: number
+          completed_at?: string | null
+          created_at?: string | null
+          description?: string | null
+          duration_minutes?: number
+          id?: string
+          status?: Database["public"]["Enums"]["task_status"] | null
+          title?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
@@ -23,7 +141,14 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
-      [_ in never]: never
+      task_category:
+        | "work"
+        | "study"
+        | "fitness"
+        | "personal"
+        | "creative"
+        | "other"
+      task_status: "pending" | "active" | "completed" | "failed"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +275,16 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      task_category: [
+        "work",
+        "study",
+        "fitness",
+        "personal",
+        "creative",
+        "other",
+      ],
+      task_status: ["pending", "active", "completed", "failed"],
+    },
   },
 } as const
