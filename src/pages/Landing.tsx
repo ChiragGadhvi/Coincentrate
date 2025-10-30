@@ -31,7 +31,8 @@ const Landing = () => {
             animate={{ opacity: 1, x: 0 }}
             className="flex items-center gap-2"
           >
-            <Coins className="w-8 h-8 text-primary" />
+            {/* <Coins className="w-8 h-8 text-primary" /> */}
+            <img src="/coin2.png" alt="Coincentrate" className="w-8 h-8" />
             <span className="text-2xl font-bold text-glow">Coincentrate</span>
           </motion.div>
           <motion.div
