@@ -25,34 +25,9 @@
     <script>
     window.addEventListener('hashchange', showView);
     window.addEventListener('DOMContentLoaded', showView);
-    function parseHashParams(hash) {
-      const params = {};
-      hash.replace(/^[^#]*#/, '').split('&').forEach(part => {
-        let [key, val] = part.split('=');
-        if (key && val) params[decodeURIComponent(key)] = decodeURIComponent(val);
-      });
-      return params;
-    }
     function showView() {
       const hash = window.location.hash;
-      // 1. If URL contains access_token (after OAuth), store it and clean up hash to #dashboard
-      if (hash.includes('access_token')) {
-        const tokenParams = parseHashParams(hash);
-        // Store the token
-        if (tokenParams.access_token) {
-          localStorage.setItem('access_token', tokenParams.access_token);
-        }
-        window.location.hash = '#dashboard';
-        return; // Wait for hashchange
-      }
-      // 2. On #dashboard, require auth
-      if (hash === '#dashboard') {
-        const token = localStorage.getItem('access_token');
-        if (!token) {
-          // No token, go to auth page (or home, or show login UI)
-          window.location.hash = '';
-          return;
-        }
+      if (hash === '#dashboard' || hash.includes('access_token')) {
         document.getElementById('main').innerHTML = '<h1>Dashboard</h1>';
       } else {
         document.getElementById('main').innerHTML = '';
