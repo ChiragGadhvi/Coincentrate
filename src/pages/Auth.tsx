@@ -7,6 +7,7 @@ import { Coins, ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
+import googleIcon from "@/assets/google.png";
 
 const Auth = () => {
   const navigate = useNavigate();
@@ -92,7 +93,7 @@ const Auth = () => {
         <div className="glass-card p-8 rounded-2xl glow-primary">
           <div className="flex items-center justify-center gap-2 mb-8">
             <Coins className="w-10 h-10 text-primary" />
-            <h1 className="text-3xl font-bold text-glow">Focus Auctions</h1>
+            <h1 className="text-3xl font-bold text-glow">Coincentrate</h1>
           </div>
 
           <div className="flex gap-2 mb-6">
@@ -111,6 +112,35 @@ const Auth = () => {
               Sign Up
             </Button>
           </div>
+
+          {/* Google Sign-In Button */}
+          <Button
+            type="button"
+            variant="hero"
+            className="w-full mb-6 flex items-center justify-center gap-3 font-medium text-base rounded-lg"
+            style={{ padding: '0.75rem 1.5rem' }}
+            onClick={async () => {
+              setLoading(true);
+              try {
+                const { error } = await supabase.auth.signInWithOAuth({
+                  provider: 'google',
+                  options: {
+                    redirectTo: window.location.origin + '/dashboard',
+                  },
+                });
+                if (error) throw error;
+                // Success -- redirect handled by supabase
+              } catch (error) {
+                toast.error((error as any)?.message || 'Unable to sign in with Google');
+              } finally {
+                setLoading(false);
+              }
+            }}
+            disabled={loading}
+          >
+            <img src={googleIcon} alt="Google icon" style={{ width: 24, height: 24, display: 'block' }} />
+            Sign in with Google
+          </Button>
 
           <form onSubmit={handleAuth} className="space-y-4">
             {!isLogin && (

@@ -28,7 +28,7 @@ const DashboardHeader = ({ profile, onSignOut }: DashboardHeaderProps) => {
           >
             <Coins className="w-8 h-8 text-primary" />
             <div>
-              <h1 className="text-xl font-bold">Focus Auctions</h1>
+              <h1 className="text-xl font-bold">Coincentrate</h1>
               <p className="text-sm text-muted-foreground">
                 {profile.username || "Focus Warrior"}
               </p>

@@ -32,7 +32,7 @@ const Landing = () => {
             className="flex items-center gap-2"
           >
             <Coins className="w-8 h-8 text-primary" />
-            <span className="text-2xl font-bold text-glow">Focus Auctions</span>
+            <span className="text-2xl font-bold text-glow">Coincentrate</span>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, x: 20 }}
@@ -140,7 +140,7 @@ const Landing = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">How Focus Auctions Works</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">How Coincentrate Works</h2>
             <p className="text-xl text-muted-foreground">Turn your time into a strategic game</p>
           </motion.div>
 
@@ -281,7 +281,7 @@ const Landing = () => {
       {/* Footer */}
       <footer className="py-8 px-4 border-t border-white/5">
         <div className="container mx-auto text-center text-muted-foreground">
-          <p>© 2025 Focus Auctions. Master your focus, one bid at a time.</p>
+          <p>© 2025 coincentrate. Master your focus, one bid at a time.</p>
         </div>
       </footer>
     </div>
