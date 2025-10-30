@@ -20,6 +20,19 @@
 
   <body>
     <div id="root"></div>
+    <div id="main"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <script>
+    window.addEventListener('hashchange', showView);
+    window.addEventListener('DOMContentLoaded', showView);
+    function showView() {
+      const hash = window.location.hash;
+      if (hash === '#dashboard') {
+        document.getElementById('main').innerHTML = '<h1>Dashboard</h1>';
+      } else {
+        document.getElementById('main').innerHTML = '<h1>Home</h1>';
+      }
+    }
+    </script>
   </body>
 </html>
