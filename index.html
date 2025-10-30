@@ -27,7 +27,14 @@
     window.addEventListener('DOMContentLoaded', showView);
     function showView() {
       const hash = window.location.hash;
-      if (hash === '#dashboard' || hash.includes('access_token')) {
+      // If coming from OAuth and not yet on #dashboard, force redirect to #dashboard
+      if (hash.includes('access_token')) {
+        if (!hash.startsWith('#dashboard')) {
+          window.location.hash = '#dashboard';
+          return; // Wait for hashchange event
+        }
+      }
+      if (hash === '#dashboard') {
         document.getElementById('main').innerHTML = '<h1>Dashboard</h1>';
       } else {
         document.getElementById('main').innerHTML = '';
