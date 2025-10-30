@@ -27,10 +27,10 @@
     window.addEventListener('DOMContentLoaded', showView);
     function showView() {
       const hash = window.location.hash;
-      if (hash === '#dashboard') {
+      if (hash === '#dashboard' || hash.includes('access_token')) {
         document.getElementById('main').innerHTML = '<h1>Dashboard</h1>';
       } else {
-        document.getElementById('main').innerHTML = '<h1>Home</h1>';
+        document.getElementById('main').innerHTML = '';
       }
     }
     </script>
