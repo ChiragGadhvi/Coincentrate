@@ -77,6 +77,22 @@ const Landing = () => {
                 See How It Works
               </Button>
             </div>
+            {/* Product Hunt Badge */}
+            <div className="mt-8 flex justify-center">
+              <a
+                href="https://www.producthunt.com/products/coincentrate?embed=true&utm_source=badge-featured&utm_medium=badge&utm_source=badge-coincentrate"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1032931&theme=dark&t=1761910893708"
+                  alt="Coincentrate - Gamify your productivity | Product Hunt"
+                  style={{ width: "100%", maxWidth: 250, height: "auto" }}
+                  width={250}
+                  height={54}
+                />
+              </a>
+            </div>
           </motion.div>
 
           {/* Animated mockup visual */}
