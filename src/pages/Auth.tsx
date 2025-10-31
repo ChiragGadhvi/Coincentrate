@@ -92,7 +92,8 @@ const Auth = () => {
 
         <div className="glass-card p-8 rounded-2xl glow-primary">
           <div className="flex items-center justify-center gap-2 mb-8">
-            <Coins className="w-10 h-10 text-primary" />
+            {/* <Coins className="w-10 h-10 text-primary" /> */}
+            <img src="/coin2.png" alt="Coincentrate" className="w-8 h-8" />
             <h1 className="text-3xl font-bold text-glow">Coincentrate</h1>
           </div>
 

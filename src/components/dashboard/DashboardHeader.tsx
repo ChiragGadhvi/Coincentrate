@@ -26,7 +26,8 @@ const DashboardHeader = ({ profile, onSignOut }: DashboardHeaderProps) => {
             animate={{ opacity: 1, x: 0 }}
             className="flex items-center gap-3"
           >
-            <Coins className="w-8 h-8 text-primary" />
+            {/* <Coins className="w-8 h-8 text-primary" /> */}
+            <img src="/coin2.png" alt="Coincentrate" className="w-8 h-8" />
             <div>
               <h1 className="text-xl font-bold">Coincentrate</h1>
               <p className="text-sm text-muted-foreground">
